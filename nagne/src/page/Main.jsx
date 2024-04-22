@@ -9,6 +9,14 @@ const Main = () => {
         <div className="wrapper">
           <div className="content">
             <div className="write-article-box"></div>
+            <div className="content-icons-section">
+              <div className="icons-section-icon"></div>
+              <div className="icons-section-icon"></div>
+              <div className="icons-section-icon"></div>
+              <div className="icons-section-icon"></div>
+              <div className="icons-section-icon"></div>
+              <div className="icons-section-icon"></div>
+            </div>
             <div className="article-container">
               {/* <Article />
             <Article />
