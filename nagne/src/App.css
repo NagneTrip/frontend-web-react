@@ -11,12 +11,22 @@
   --light-btn-color: rgb(225, 225, 225);
 }
 
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap");
-
-.ibm-plex sans kr-regular {
-  font-family: "IBM Plex Sans KR", sans-serif;
+@font-face {
+  font-family: "BMJUA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMJUA.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.jua-regular {
+  font-family: "BMJUA", sans-serif;
   font-weight: 400;
   font-style: normal;
+}
+.jua-regular-large {
+  font-family: "BMJUA", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: large;
 }
 
 * {
@@ -186,12 +196,56 @@ a {
 
 .write-article-box {
   width: 880px;
-  height: 80px;
+  height: 70px;
   background-color: #eeeeee;
-  border-radius: 15px;
+  border-radius: 45px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 25px 0px 15px;
 }
 
-.content-icons-section{
+.write-article-box {
+  display: flex;
+}
+
+.write-article-left-box {
+  display: flex;
+  gap: 10px;
+}
+
+.write-article-icon-box {
+  width: 45px;
+  height: 45px;
+  border-radius: 50px;
+  background-color: #c2c2c2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.write-article-icon {
+  width: 25px;
+  height: 25px;
+  color: #eeeeee;
+}
+
+.write-article-left-box p {
+  font-size: x-large;
+  letter-spacing: 2px;
+  color: #ababad;
+  display: flex;
+  align-items: center;
+}
+
+.write-icon {
+  width: 30px;
+  height: 30px;
+  color: #ababad;
+}
+
+.content-icons-section {
   display: none;
 }
 
@@ -212,8 +266,24 @@ a {
 
 .side-weather {
   width: 100%;
-  height: 160px;
-  background-color: #eeeeee;
+  height: 80px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 30px 5px 30px;
+}
+
+.weather-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #5b5c5c;
+}
+
+.weather-icon {
+  width: 80px;
+  height: 80px;
   border-radius: 15px;
 }
 
@@ -308,7 +378,8 @@ a {
   }
 
   .write-article-box {
-    display: none;
+    width: 100%;
+    margin-top: 15px;
   }
 
   .article-container {
@@ -317,6 +388,25 @@ a {
 
   .side {
     display: none;
+  }
+
+  .side-weather {
+    width: 90px;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid var(--ssafy-blue);
+    box-shadow: #96999c 1px 2px 3px 1px;
+    cursor: pointer;
+  }
+
+  .weather-text {
+    display: none;
+  }
+
+  .weather-icon {
+    display: flex;
   }
 
   /* header */
@@ -336,7 +426,7 @@ a {
     display: flex;
     justify-content: flex-end;
     width: 100%;
-    
+
     height: 100%;
     justify-content: flex-end;
     align-items: center;
@@ -399,7 +489,7 @@ a {
     width: 100%;
   }
 
-  .main{
+  .main {
     width: 100%;
   }
   .main-container {
@@ -407,7 +497,7 @@ a {
     padding: 0px 10px 0px 10px;
   }
 }
-@media screen and (max-width:560px){
+@media screen and (max-width: 560px) {
   .navbar-icons {
     display: none;
   }

@@ -9,12 +9,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
+  const [displayMenu, setDisplayMenu] = useState(false);
 
-  const [displayMenu, setDisplayMenu]=useState(false);
-
-  const toggleOffDisplay=()=>{
+  const toggleOffDisplay = () => {
     setDisplayMenu(!displayMenu);
-  }
+  };
 
   return (
     <div className="header">
@@ -25,16 +24,24 @@ const Header = () => {
         </div>
         <ul className="navbar-menu">
           <li>
-            <Link to="">여행 정보 공유</Link>
+            <Link to="" className="jua-regular-large">
+              여행 정보 공유
+            </Link>
           </li>
           <li>
-            <Link to="">나의 여행 정보</Link>
+            <Link to="" className="jua-regular-large">
+              나의 여행 정보
+            </Link>
           </li>
           <li>
-            <Link to="">핫플 자랑하기</Link>
+            <Link to="" className="jua-regular-large">
+              핫플 자랑하기
+            </Link>
           </li>
           <li>
-            <Link to="http://www.naver.com">핫플 자랑하기</Link>
+            <Link to="http://www.naver.com" className="jua-regular-large">
+              핫플 자랑하기
+            </Link>
           </li>
         </ul>
         <div className="flodedNav">
@@ -54,27 +61,33 @@ const Header = () => {
             <FontAwesomeIcon className="icon" icon={faUser} id="navbar-user" />
           </div>
         </div>
-        <div className="search-menu">
-          {/* 검색 기능 추가 */}
-        </div>
+        <div className="search-menu">{/* 검색 기능 추가 */}</div>
       </div>
-        <ul className={`burger-menu ${displayMenu ? '' : 'off-display'}`}>
-          <li>
-            <Link to="">여행 정보 공유</Link>
-          </li>
-          <hr />
-          <li>
-            <Link to="">나의 여행 정보</Link>
-          </li>
-          <hr />
-          <li>
-            <Link to="">핫플 자랑하기</Link>
-          </li>
-          <hr />
-          <li>
-            <Link to="">핫플 자랑하기</Link>
-          </li>
-        </ul>
+      <ul className={`burger-menu ${displayMenu ? "" : "off-display"}`}>
+        <li>
+          <Link to="" className="jua-regular">
+            여행 정보 공유
+          </Link>
+        </li>
+        <hr />
+        <li>
+          <Link to="" className="jua-regular">
+            나의 여행 정보
+          </Link>
+        </li>
+        <hr />
+        <li>
+          <Link to="" className="jua-regular">
+            핫플 자랑하기
+          </Link>
+        </li>
+        <hr />
+        <li>
+          <Link to="" className="jua-regular">
+            핫플 자랑하기
+          </Link>
+        </li>
+      </ul>
     </div>
   );
 };
