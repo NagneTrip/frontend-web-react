@@ -32,6 +32,7 @@ const Weather = () => {
     },
   ]);
   const [weather, setWeather] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const getNowAreaGeolocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       let lat = position.coords.latitude;
@@ -51,6 +52,10 @@ const Weather = () => {
   };
 
   const getWeatherByArea = async (lat, lon) => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 300);
     const url = `https://data.api.xweather.com/conditions/closest?p=${lat},${lon}&client_id=${keys.weatherKey.id}&client_secret=${keys.weatherKey.secret}`;
     await fetch(url)
       .then((res) => res.json())
@@ -67,20 +72,30 @@ const Weather = () => {
 
   useEffect(() => {
     getNowAreaGeolocation();
-    // getWeatherByArea();
   }, []);
 
   return (
     <div className="side-weather">
-      <div className="weather-text">
-        <h2 className="jua-regular">{weather ? weather[1] : ""}</h2>
-        <h5 className="jua-regular">{weather ? weather[2] : ""}</h5>
-      </div>
-      <img
-        src={weather ? `../src/assets/weather_icon/${weather[3]}` : ""}
-        className="weather-icon"
-        alt=""
-      />
+      {isLoading ? (
+        <div
+          className="weather-spinner"
+          style={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        >
+          <img width={100} height={100} src="../src/assets/blue_spinner.svg" alt="로딩 중" />
+        </div>
+      ) : (
+        <div className="show-weather">
+          <div className="weather-text">
+            <h2 className="jua-regular">{weather ? weather[1] : ""}</h2>
+            <h5 className="jua-regular">{weather ? weather[2] : ""}</h5>
+          </div>
+          <img
+            src={weather ? `../src/assets/weather_icon/${weather[3]}` : ""}
+            className="weather-icon"
+            alt=""
+          />
+        </div>
+      )}
     </div>
   );
 };
