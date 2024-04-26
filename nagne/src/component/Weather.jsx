@@ -31,7 +31,7 @@ const Weather = () => {
       },
     },
   ]);
-  const [weather, setWeather] = useState([]);
+  const [weather, setWeather] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const getNowAreaGeolocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -67,12 +67,77 @@ const Weather = () => {
           data.response[0].periods[0].icon,
         ]);
       })
-      .catch();
+      .catch(console.log("에러발생"));
   };
 
   useEffect(() => {
     getNowAreaGeolocation();
   }, []);
+
+  const findWeatherIcon = () => {
+    if (!weather) {
+      return "";
+    }
+    console.log(weather);
+    const weahterApiIcon = weather[3].split(".")[0];
+
+    if (
+      weahterApiIcon.includes("blizzard") ||
+      weahterApiIcon.includes("cloudy") ||
+      weahterApiIcon.includes("cold") ||
+      weahterApiIcon.includes("dust") ||
+      weahterApiIcon.includes("fog") ||
+      weahterApiIcon.includes("smoke")
+    ) {
+      return "cloudy.svg";
+    }
+
+    if (
+      weahterApiIcon.includes("flurries") ||
+      weahterApiIcon.includes("mcloudy") ||
+      weahterApiIcon.includes("wind")
+    ) {
+      return "cloudy-sunny.svg";
+    }
+
+    if (
+      weahterApiIcon.includes("blowingsnow") ||
+      weahterApiIcon.includes("hot") ||
+      weahterApiIcon.includes("snow") ||
+      weahterApiIcon.includes("wintrymix")
+    ) {
+      return "snowy.svg";
+    }
+
+    if (
+      weahterApiIcon.includes("sunny") ||
+      weahterApiIcon.includes("clear") ||
+      weahterApiIcon.includes("fair") ||
+      weahterApiIcon.includes("hazy")
+    ) {
+      return "sunny.svg";
+    }
+
+    if (weahterApiIcon.includes("na")) {
+      return "sunny_snow.svg";
+    }
+
+    if (weahterApiIcon.includes("tstorm")) {
+      return "thunder.svg";
+    }
+
+    if (
+      weahterApiIcon.includes("drizzle") ||
+      weahterApiIcon.includes("freezingrain") ||
+      weahterApiIcon.includes("sleet") ||
+      weahterApiIcon.includes("rain") ||
+      weahterApiIcon.includes("showers")
+    ) {
+      return "rainy.svg";
+    }
+
+    return "";
+  };
 
   return (
     <div className="side-weather">
@@ -90,7 +155,7 @@ const Weather = () => {
             <h5 className="jua-regular">{weather ? weather[2] : ""}</h5>
           </div>
           <img
-            src={weather ? `../src/assets/weather_icon/${weather[3]}` : ""}
+            src={`../src/assets/weather_icon/${findWeatherIcon()}`}
             className="weather-icon"
             alt=""
           />
